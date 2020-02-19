@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itdr.mapper.UsersMapper">
+    <resultMap id="BaseResultMap" type="com.itdr.pojo.Users">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="uhone" property="uhone" jdbcType="VARCHAR"/>
+        <result column="img" property="img" jdbcType="VARCHAR"/>
+        <result column="money" property="money" jdbcType="INTEGER"/>
+        <result column="role" property="role" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="ip" property="ip" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, username, password, email, uhone, wenti, daan, img, money, role, create_time, update_time,
+    ip
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.itdr.pojo.Users">
+    insert into users (id, username, password, 
+      email, uhone, img, 
+      money, role, create_time, 
+      update_time, ip)
+    values (null , #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{uhone,jdbcType=VARCHAR}, #{wenti,jdbcType=VARCHAR},
+      #{daan,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR},
+      #{money,jdbcType=INTEGER}, '0', now(),
+      now(), #{ip,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.itdr.pojo.Users">
+        insert into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="uhone != null">
+                uhone,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+            <if test="money != null">
+                money,
+            </if>
+            <if test="role != null">
+                role,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="ip != null">
+                ip,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="uhone != null">
+                #{uhone,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=INTEGER},
+            </if>
+            <if test="role != null">
+                #{role,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Users">
+        update users
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="uhone != null">
+                uhone = #{uhone,jdbcType=VARCHAR},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                money = #{money,jdbcType=INTEGER},
+            </if>
+            <if test="role != null">
+                role = #{role,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ip != null">
+                ip = #{ip,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.Users">
+    update users
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      uhone = #{uhone,jdbcType=VARCHAR},
+      wenti = #{wenti, jdbcType=VARCHAR},
+      daan = #{daan,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      role = #{role,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ip = #{ip,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <!--登录-->
+    <select id="selectByUsernameAndPassword" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where username=#{param1} and password=#{param2}
+    </select>
+    <!--查询用户是否存在-->
+    <select id="selectByUsername" parameterType="string" resultType="com.itdr.pojo.Users">
+    select
+    <include refid="Base_Column_List"/>
+    from users
+    where username=#{username}
+  </select>
+    <!--更改用户数据-->
+    <update id="updateUsers" parameterType="map">
+        update users
+        set
+        <if test="email != null and email != ''">
+            email = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="uhone != null and uhone != ''">
+            uhone = #{uhone,jdbcType=VARCHAR},
+        </if>
+        <if test="wenti != null and wenti != ''">
+            wenti = #{wenti,jdbcType=VARCHAR},
+        </if>
+        <if test="daan != null and daan != ''">
+            daan = #{daan,jdbcType=VARCHAR},
+        </if>
+        <if test="img != null and img != ''">
+            img = #{img,jdbcType=VARCHAR},
+        </if>
+        update_time=now()
+        where id= #{id,jdbcType=INTEGER}
+    </update>
+    <!--根据用户名或邮箱查询用户-->
+    <select id="selectByUsernameAndEmail" resultType="java.lang.Integer">
+        select
+        count(id)
+        from users
+        where
+        <if test="type == 'username'">
+            username=#{str}
+        </if>
+        <if test="type == 'email'">
+            email=#{str}
+        </if>
+    </select>
+
+    <select id="selectByusernameAndWenTiAndDaAn" resultType="com.itdr.pojo.Users">
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where username=username and wenti=wenti and daan=daan
+    </select>
+
+
+</mapper>
