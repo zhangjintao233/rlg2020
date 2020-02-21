@@ -36,7 +36,8 @@ public class ConstCode {
         FAIL_USER(26,"用户注册失败"),
         FAIL_UPDATEUSER(27,"用户更新失败"),
         EMPTY_EMAILORNAME(28,"用户名或邮箱不能为空"),
-        FAIL_EMAILORNAME(29,"用户名或邮箱已存在");
+        FAIL_EMAILORNAME(29,"用户名或邮箱已存在"),
+        EMPTY_LING(30,"令牌不能为空");
 
 
 

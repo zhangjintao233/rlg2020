@@ -158,6 +158,40 @@ public class UserController {
         return userService.selectByUsernameAndWenTiAndDaAn(username,wenti,daan);
     }
 
+    /**
+     * 提交命令更改密码
+     * @param username
+     * @param password
+     * @param ling
+     * @return
+     */
+    @RequestMapping("/mim.do")
+    public ServerResponse<Users> updatePassword(String username,String password,String ling,HttpSession session){
+        ServerResponse<Users> serverResponse =  userService.updatePassword(username,password,ling);
+        if (serverResponse.isSuccess()){
+            session.removeAttribute("user");
+        }
+        return serverResponse;
+    }
+
+    /**
+     * 登录状态下修改密码
+     * @param password
+     * @param passwordNew
+     * @param session
+     * @return
+     */
+    @RequestMapping("/upm.do")
+    public ServerResponse<Users> updatePasswordSetPasswordNew(String password,String passwordNew,HttpSession session){
+        Users user = (Users)session.getAttribute("user");
+        if (user == null){
+            return ServerResponse.defeatedRS(
+                    ConstCode.DEFAULT_FAIL,
+                    ConstCode.UserEnum.NO_LOGIN.getDesc()
+            );
+        }
+        return userService.updatePasswordSetPasswordNew(user,password,passwordNew);
+    }
 
 
 }

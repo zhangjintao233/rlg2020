@@ -30,15 +30,15 @@
   </delete>
     <insert id="insert" parameterType="com.itdr.pojo.Users">
     insert into users (id, username, password, 
-      email, uhone, img, 
+      email, uhone, wenti, daan, img,
       money, role, create_time, 
       update_time, ip)
     values (null , #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{email,jdbcType=VARCHAR}, #{uhone,jdbcType=VARCHAR}, #{wenti,jdbcType=VARCHAR},
-      #{daan,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR},
-      #{money,jdbcType=INTEGER}, '0', now(),
-      now(), #{ip,jdbcType=VARCHAR})
-  </insert>
+    #{email,jdbcType=VARCHAR}, #{uhone,jdbcType=VARCHAR}, #{wenti,jdbcType=VARCHAR},
+    #{daan,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR},
+    #{money,jdbcType=INTEGER}, '0', now(),
+    now(), #{ip,jdbcType=VARCHAR})
+</insert>
     <insert id="insertSelective" parameterType="com.itdr.pojo.Users">
         insert into users
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -173,11 +173,11 @@
     </select>
     <!--查询用户是否存在-->
     <select id="selectByUsername" parameterType="string" resultType="com.itdr.pojo.Users">
-    select
-    <include refid="Base_Column_List"/>
-    from users
-    where username=#{username}
-  </select>
+        select
+        <include refid="Base_Column_List"/>
+        from users
+        where username=#{username}
+    </select>
     <!--更改用户数据-->
     <update id="updateUsers" parameterType="map">
         update users
@@ -213,13 +213,29 @@
             email=#{str}
         </if>
     </select>
-
+    <!--根据密保问题修改密码-->
     <select id="selectByusernameAndWenTiAndDaAn" resultType="com.itdr.pojo.Users">
         select
         <include refid="Base_Column_List"/>
         from users
         where username=username and wenti=wenti and daan=daan
     </select>
+
+    <update id="updateByPassword" parameterType="map">
+        update users
+        set
+        password = #{passwordNew,jdbcType=VARCHAR},
+        update_time=now()
+        where username = #{username}
+    </update>
+
+    <update id="updatePasswordSetPasswordNew">
+        update users
+        set password=#{passwordNew},update_time=now()
+        where username=#{username} and password=#{password}
+    </update>
+
+
 
 
 </mapper>

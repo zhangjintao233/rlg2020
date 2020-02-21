@@ -16,4 +16,8 @@ public interface UserService {
 
     ServerResponse<Users> selectByUsernameAndWenTiAndDaAn(String username, String wenti, String daan);
 
+    ServerResponse<Users> updatePassword(String username, String wenti, String daan);
+
+    ServerResponse<Users> updatePasswordSetPasswordNew(Users user, String password, String passwordNew);
+
 }
