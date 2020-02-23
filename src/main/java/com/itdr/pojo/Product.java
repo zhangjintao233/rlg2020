@@ -1,5 +1,7 @@
 package com.itdr.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Product {
@@ -11,13 +13,15 @@ public class Product {
 
     private String img;
 
+    private Integer status;
+
     private Integer count;
 
     private String state;
-
+    @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-
-    private Date updataTime;
+    @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -75,11 +79,19 @@ public class Product {
         this.createTime = createTime;
     }
 
-    public Date getUpdataTime() {
-        return updataTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdataTime(Date updataTime) {
-        this.updataTime = updataTime;
+    public void setUpdateTime(Date updataTime) {
+        this.updateTime = updataTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

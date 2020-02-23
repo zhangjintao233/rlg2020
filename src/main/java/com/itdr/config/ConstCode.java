@@ -1,5 +1,6 @@
 package com.itdr.config;
 
+import com.itdr.pojo.Product;
 import sun.invoke.empty.Empty;
 
 public class ConstCode {
@@ -64,6 +65,39 @@ public class ConstCode {
         public void setDesc(String desc) {
             this.desc = desc;
         }
+    }
+
+    public enum ProductEnum{
+
+        UNLAWFULNESS_PARAMETER(100,"非法参数"),
+        NULL_PRODUCT(100,"商品不存在"),
+        NULL_PARAMETER(100,"参数不能为空");
+
+        private int code;
+        private String desc;
+
+        private ProductEnum(int code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
+
+
     }
 }
 

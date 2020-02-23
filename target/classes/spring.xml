@@ -25,12 +25,22 @@
 
 
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--配置mybatis核心配置文件-->
         <property name="configLocation" value="classpath:sm.xml"/>
+        <!--配置数据源-->
         <property name="dataSource" ref="dataSource"/>
+        <!-- 分页插件 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties" value="mysql"/>
+                </bean>
+            </array>
+        </property>
     </bean>
 
-
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--配置mapper接口-->
         <property name="basePackage" value="com.itdr.mapper"/>
     </bean>
 
