@@ -8,7 +8,7 @@
         <result column="img" property="img" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="INTEGER"/>
         <result column="count" property="count" jdbcType="INTEGER"/>
-        <result column="state" property="state" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -29,9 +29,9 @@
     insert into product (id, pname, price, 
       img, status, count, state,
       create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{img,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR},
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    values (null , #{pname,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+      #{img,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, #{state,jdbcType=INTEGER},
+      now(), now())
   </insert>
     <insert id="insertSelective" parameterType="com.itdr.pojo.Product">
         insert into product
@@ -78,7 +78,7 @@
                 #{count,jdbcType=INTEGER},
             </if>
             <if test="state != null">
-                #{state,jdbcType=VARCHAR},
+                #{state,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -122,7 +122,7 @@
       img = #{img,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
-      state = #{state,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

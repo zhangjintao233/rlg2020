@@ -1,11 +1,21 @@
 package com.itdr.pojo;
 
-public class Gwc{
+import java.util.Date;
+
+public class Gwc {
     private Integer id;
 
     private Integer uid;
 
     private Integer pid;
+
+    private Integer quantiy;
+
+    private Integer checked;
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -14,19 +24,6 @@ public class Gwc{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getPmoney() {
-        return pmoney;
-    }
-
-    public void setPmoney(String pmoney) {
-        this.pmoney = pmoney;
-    }
-
-    private String pname;
-
-    private String pmoney;
-
 
     public Integer getUid() {
         return uid;
@@ -44,11 +41,35 @@ public class Gwc{
         this.pid = pid;
     }
 
-    public String getPname() {
-        return pname;
+    public Integer getQuantiy() {
+        return quantiy;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname == null ? null : pname.trim();
+    public void setQuantiy(Integer quantiy) {
+        this.quantiy = quantiy;
+    }
+
+    public Integer getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Integer checked) {
+        this.checked = checked;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

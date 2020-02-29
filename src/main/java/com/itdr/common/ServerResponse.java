@@ -48,20 +48,20 @@ public class ServerResponse<T> implements Serializable {
     }
 
     public static <T> ServerResponse successRS(String msg) {
-        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS,msg);
+        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS, msg);
     }
 
     public static <T> ServerResponse successRS(T data) {
-        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS,data);
+        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS, data);
     }
 
-    public static <T> ServerResponse successRs(Integer status,T data){
-        return new ServerResponse(status,data);
+    public static <T> ServerResponse successRs(Integer status, T data) {
+        return new ServerResponse(status, data);
     }
 
     //    成功的时候传入状态码、数据、信息
     public static <T> ServerResponse successRS(T data, String msg) {
-        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS,data, msg);
+        return new ServerResponse(ConstCode.DEFAULT_SUCCRSS, data, msg);
     }
 
     public static <T> ServerResponse defeatedRS(Integer errorCode, String errorMessage) {
@@ -69,16 +69,14 @@ public class ServerResponse<T> implements Serializable {
     }
 
     public static <T> ServerResponse defeatedRS(String errorMessage) {
-        return new ServerResponse(ConstCode.DEFAULT_FAIL,errorMessage);
+        return new ServerResponse(ConstCode.DEFAULT_FAIL, errorMessage);
     }
 
     @JsonIgnore
-//让success不在json序列化结果之中
+    //让success不在json序列化结果之中
     public boolean isSuccess() {
         return this.status == ConstCode.DEFAULT_SUCCRSS;
     }
-
-
 
 
     public Integer getStatus() {

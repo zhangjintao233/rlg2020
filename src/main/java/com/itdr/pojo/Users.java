@@ -134,4 +134,23 @@ public class Users {
     public void setDaan(String daan) {
         this.daan = daan;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", uhone='" + uhone + '\'' +
+                ", wenti='" + wenti + '\'' +
+                ", daan='" + daan + '\'' +
+                ", img='" + img + '\'' +
+                ", money=" + money +
+                ", role='" + role + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", ip='" + ip + '\'' +
+                '}';
+    }
 }

@@ -17,4 +17,10 @@ public class TestDemo {
             System.out.println(s);
         }
     }
+
+
+    @Test
+    public void test2(){
+
+    }
 }

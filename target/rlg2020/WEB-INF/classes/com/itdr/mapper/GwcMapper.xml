@@ -3,14 +3,169 @@
 <mapper namespace="com.itdr.mapper.GwcMapper" >
   <resultMap id="BaseResultMap" type="com.itdr.pojo.Gwc" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <id column="pmoney" property="pmoney" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
-    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="quantiy" property="quantiy" jdbcType="INTEGER" />
+    <result column="checked" property="checked" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, pid, quantiy, checked, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gwc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gwc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itdr.pojo.Gwc" >
+    insert into gwc (id, uid, pid, 
+      quantiy, checked, create_time, 
+      update_time)
+    values (null , #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER},
+      #{quantiy,jdbcType=INTEGER}, 1, now(),now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.itdr.pojo.Gwc" >
+    insert into gwc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="quantiy != null" >
+        quantiy,
+      </if>
+      <if test="checked != null" >
+        checked,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="quantiy != null" >
+        #{quantiy,jdbcType=INTEGER},
+      </if>
+      <if test="checked != null" >
+        #{checked,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itdr.pojo.Gwc" >
+    update gwc
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="quantiy != null" >
+        quantiy = #{quantiy,jdbcType=INTEGER},
+      </if>
+      <if test="checked != null" >
+        checked = #{checked,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itdr.pojo.Gwc" >
+    update gwc
+    set uid = #{uid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      quantiy = #{quantiy,jdbcType=INTEGER},
+      checked = #{checked,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--=========================================================================================-->
+
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from gwc
+    where uid=#{id}
+
+  </select>
 
 
+  <select id="selectByuseridAndProductId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from gwc
+    where uid=#{uid} and pid=#{pid}
 
+  </select>
+
+  <update id="updateByQuantiy" parameterType="com.itdr.pojo.Gwc">
+    update gwc
+    set
+    quantiy=#{quantiy},
+    update_time=now()
+    where id=#{id}
+
+  </update>
+
+  <delete id="deleteByUserIdAndProductId" parameterType="map">
+    delete from gwc
+    where uid=#{uid} and
+    <if test="pid != 0">
+      pid=#{pid}
+    </if>
+    <if test="pid == 0">
+      checked=1
+    </if>
+
+  </delete>
+
+  <update id="updateByChecked" parameterType="map">
+    update gwc
+    set checked=#{type},update_time=now()
+    <where>
+      <if test="pid != null">
+        pid=#{pid}
+      </if>
+      and uid=#{uid}
+    </where>
+
+
+  </update>
 
 
 

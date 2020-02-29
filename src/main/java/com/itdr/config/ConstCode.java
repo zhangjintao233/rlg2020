@@ -6,6 +6,8 @@ import sun.invoke.empty.Empty;
 public class ConstCode {
     public static final int DEFAULT_SUCCRSS=200;
     public static final int DEFAULT_FAIL=100;
+    public static final String UNLAWFULNESS_ALL ="非法参数";
+
 
     public enum UserEnum{
         //状态信息
@@ -97,6 +99,116 @@ public class ConstCode {
             this.desc = desc;
         }
 
+
+    }
+
+    public enum GwcEnum{
+
+        NULL_PRODUCT(100,"商品不存在"),
+        FAIL_PRODUCT(100,"添加商品失败"),
+        GUO_PRODUCT(100,"商品超出库存"),
+        FAIL_DELETE(100,"删除商品失败"),
+        NULL_USER(100,"该用户购物车没有商品"),
+        LEI_ONE(1,"类型"),
+        LEI_TOW(2,"类型");
+
+
+
+        private int code;
+        private String desc;
+
+        private GwcEnum(int code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
+
+    }
+
+    public enum OrderEnum{
+
+        NULL_ORDER(100,"订单不存在"),
+        MATE_ORDER(100,"订单不匹配"),
+        FAIL_ORDER(100,"下单失败"),
+        FAIL_DELETE(100,"删除商品失败"),
+        NULL_USER(100,"该用户购物车没有商品"),
+        LEI_ONE(1,"类型"),
+        LEI_TOW(2,"类型");
+
+
+
+        private int code;
+        private String desc;
+
+        private OrderEnum(int code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
+
+    }
+
+    public enum ALiPayEnum{
+
+        FAIL_DELETE(100,"验签失败"),
+        FAIL_ALI(100,"FAILED");
+
+
+
+
+        private int code;
+        private String desc;
+
+        private ALiPayEnum(int code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
 
     }
 }

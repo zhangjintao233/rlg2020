@@ -22,7 +22,7 @@ public class ProductVo {
 
     private Integer count;
 
-    private String state;
+    private Integer state;
     @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")

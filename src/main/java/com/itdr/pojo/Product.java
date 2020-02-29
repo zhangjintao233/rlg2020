@@ -17,7 +17,7 @@ public class Product {
 
     private Integer count;
 
-    private String state;
+    private Integer state;
     @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     @JsonFormat(locale ="zh", timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
@@ -63,12 +63,12 @@ public class Product {
         this.count = count;
     }
 
-    public String getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public Date getCreateTime() {
@@ -93,5 +93,20 @@ public class Product {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", pname='" + pname + '\'' +
+                ", price=" + price +
+                ", img='" + img + '\'' +
+                ", status=" + status +
+                ", count=" + count +
+                ", state=" + state +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }
