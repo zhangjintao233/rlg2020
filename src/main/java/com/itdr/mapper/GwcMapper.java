@@ -31,4 +31,6 @@ public interface GwcMapper {
     int updateByChecked(@Param("uid") Integer id,
                         @Param("pid") Integer productId,
                         @Param("type") Integer type);
+
+    int deleteByuserid(Integer uid);
 }

@@ -21,6 +21,8 @@ public class TestDemo {
 
     @Test
     public void test2(){
-
+        long round = Math.round(Math.random() * 100);
+        long l = System.currentTimeMillis()+round;
+        System.out.println(l);
     }
 }

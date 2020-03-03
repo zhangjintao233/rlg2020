@@ -154,4 +154,20 @@ public class CwcController {
         return gwcService.checked(productId, type, user);
     }
 
+
+    /**
+     * 判断购物车去结算
+     * @param shippingId
+     * @param session
+     * @return
+     */
+    @RequestMapping("over.do")
+    public ServerResponse over(HttpSession session){
+        Users user = (Users) session.getAttribute("user");
+        if ( user == null){
+            return ServerResponse.defeatedRS(ConstCode.UserEnum.NO_LOGIN.getDesc());
+        }
+        return gwcService.over(user);
+    }
+
 }

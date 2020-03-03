@@ -28,8 +28,8 @@ public class GwcServiceImpl implements GwcService {
     @Autowired
     ProductMapper productMapper;
 
-    // 获取GwcV对象
-    private GwcVo getGwcVo(List<Gwc> gwcList) {
+    // 获取GwcVo对象
+    protected GwcVo getGwcVo(List<Gwc> gwcList) {
         // 封装购物车
         List<GwcProductVo> gwcProductVos = new ArrayList<>();
         boolean bol = true;
@@ -78,6 +78,7 @@ public class GwcServiceImpl implements GwcService {
         }
         return ServerResponse.successRS(product);
     }
+
 
     // 封装好的GwcVo对象
     // 查询登录用户购物车信息
@@ -251,4 +252,27 @@ public class GwcServiceImpl implements GwcService {
 
         return list(user);
     }
+
+
+    @Override
+    public ServerResponse over(Users user) {
+        List<Gwc> gwcs = gwcMapper.selectByUserId(user.getId());
+        if (gwcs == null){
+            return ServerResponse.defeatedRS(ConstCode.GwcEnum.NULL_USER.getDesc());
+        }
+
+        boolean bo = false;
+        for (Gwc g : gwcs){
+            if (g.getChecked() == 1){
+                bo = true;
+            }
+        }
+        if (!bo){
+            return ServerResponse.defeatedRS(ConstCode.GwcEnum.NO_PRODUCT.getDesc());
+        }
+        return ServerResponse.successRS(true);
+    }
+
+
+
 }

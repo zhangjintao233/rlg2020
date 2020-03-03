@@ -15,4 +15,6 @@ public interface GwcService {
     ServerResponse selectUserProduct(Users user);
 
     ServerResponse checked(Integer productId, Integer type, Users user);
+
+    ServerResponse over(Users user);
 }

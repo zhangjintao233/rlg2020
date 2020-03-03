@@ -164,8 +164,12 @@
       and uid=#{uid}
     </where>
 
-
   </update>
+
+  <delete id="deleteByuserid" parameterType="java.lang.Integer" >
+    delete from gwc
+    where id = #{uid,jdbcType=INTEGER} and checked=1
+  </delete>
 
 
 

@@ -108,7 +108,10 @@ public class ConstCode {
         FAIL_PRODUCT(100,"添加商品失败"),
         GUO_PRODUCT(100,"商品超出库存"),
         FAIL_DELETE(100,"删除商品失败"),
+        FAIL_ORDER(100,"创建订单失败"),
+        FAIL_ORDERITER(100,"创建订单详情失败"),
         NULL_USER(100,"该用户购物车没有商品"),
+        NO_PRODUCT(100,"该用户购物车没有被选中商品"),
         LEI_ONE(1,"类型"),
         LEI_TOW(2,"类型");
 
@@ -190,6 +193,41 @@ public class ConstCode {
         private String desc;
 
         private ALiPayEnum(int code, String desc){
+            this.code = code;
+            this.desc = desc;
+        }
+
+        public int getCode(){
+            return code;
+        }
+
+        public void setCode(int code){
+            this.code = code;
+        }
+
+        public String getDesc(){
+            return desc;
+        }
+
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
+
+    }
+
+
+    public enum ShippingEnum{
+
+        NULL_SHIPPING(100,"地址不存在"),
+        FAIL_ALI(100,"FAILED");
+
+
+
+
+        private int code;
+        private String desc;
+
+        private ShippingEnum(int code, String desc){
             this.code = code;
             this.desc = desc;
         }

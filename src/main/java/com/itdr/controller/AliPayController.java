@@ -49,6 +49,12 @@ public class AliPayController {
     }
 
 
+    /**
+     * 支付宝回调
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("callback.do")
     private String callback(HttpServletRequest request, HttpServletResponse response) {
         ServerResponse sr = null;
@@ -111,6 +117,12 @@ public class AliPayController {
     }
 
 
+    /**
+     * 查询订单状态
+     * @param session
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("selectorder.do")
     public ServerResponse selectOrderNo(HttpSession session,Long orderNo){
         Users user = (Users) session.getAttribute("user");

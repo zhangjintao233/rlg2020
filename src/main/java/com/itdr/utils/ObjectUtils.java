@@ -6,10 +6,7 @@ import com.itdr.config.pay.BizContent;
 import com.itdr.config.pay.Configs;
 import com.itdr.config.pay.PGoodsDetail;
 import com.itdr.pojo.*;
-import com.itdr.pojo.vo.GwcProductVo;
-import com.itdr.pojo.vo.GwcVo;
-import com.itdr.pojo.vo.ProductVo;
-import com.itdr.pojo.vo.UsersVo;
+import com.itdr.pojo.vo.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -101,6 +98,41 @@ public class ObjectUtils {
         // 购物车总价
         gv.setCarTotalPrice(gwcPrice);
         return gv;
+    }
+
+
+    /**
+     * 封装商品详情
+     * @param o
+     * @return
+     */
+    public static OrderItemVO orderItemVO(OrderItem o){
+        OrderItemVO orderItemVO = new OrderItemVO();
+        orderItemVO.setPid(o.getPid());
+        orderItemVO.setPname(o.getPname());
+        orderItemVO.setPimg(o.getPimg());
+        orderItemVO.setCurrentUnitPrice(o.getCurrentUnitPrice());
+        orderItemVO.setQuantity(o.getQuantity());
+        orderItemVO.setTotalPrice(o.getTotalPrice());
+        return orderItemVO;
+    }
+
+    /**
+     * 封装地址详情
+     * @param s
+     * @return
+     */
+    public static ShippingVo shippingVo(Shipping s){
+        ShippingVo shippingVo = new ShippingVo();
+        shippingVo.setReceiverName(s.getReceiverName());
+        shippingVo.setReceiverPhone(s.getReceiverPhone());
+        shippingVo.setReceiverModile(s.getReceiverModile());
+        shippingVo.setReceiverProvince(s.getReceiverProvince());
+        shippingVo.setReceiverCity(s.getReceiverCity());
+        shippingVo.setReceiverDistrict(s.getReceiverDistrict());
+        shippingVo.setReceiverAddress(s.getReceiverAddress());
+        shippingVo.setReceiverZip(s.getReceiverZip());
+        return shippingVo;
     }
 
 

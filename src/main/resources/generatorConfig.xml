@@ -51,14 +51,15 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
 
-        <table schema="" tableName="rlg_order" domainObjectName="Order" enableCountByExample="false"
+        <!--<table schema="" tableName="rlg_order" domainObjectName="Order" enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"></table>
 
         <table schema="" tableName="order_item" domainObjectName="OrderItem" enableCountByExample="false"
                enableDeleteByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"></table>
-        <table schema="" tableName="payinfo" domainObjectName="PayInfo" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+
+        <table schema="" tableName="shipping" domainObjectName="Shipping" enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"></table>
 

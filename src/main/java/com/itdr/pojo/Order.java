@@ -1,5 +1,6 @@
 package com.itdr.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Order {
@@ -11,7 +12,7 @@ public class Order {
 
     private Integer shippingId;
 
-    private Long payment;
+    private BigDecimal payment;
 
     private Integer paymentType;
 
@@ -63,11 +64,11 @@ public class Order {
         this.shippingId = shippingId;
     }
 
-    public Long getPayment() {
+    public BigDecimal getPayment() {
         return payment;
     }
 
-    public void setPayment(Long payment) {
+    public void setPayment(BigDecimal payment) {
         this.payment = payment;
     }
 
