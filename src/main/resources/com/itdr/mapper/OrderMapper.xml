@@ -207,5 +207,13 @@
 
   </select>
 
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from rlg_order
+    where uid=#{id} and status=10
+
+  </select>
+
 
 </mapper>

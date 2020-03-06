@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -21,6 +22,14 @@ public class OrderVo {
     private Integer postage;
 
     private Integer status;
+
+    private Date paymentTime;
+
+    private Date sendTime;
+
+    private Date endTime;
+
+    private Date closeTime;
 
     private List<OrderItemVO> orderItemVOList;
 

@@ -168,7 +168,8 @@
 
   <delete id="deleteByuserid" parameterType="java.lang.Integer" >
     delete from gwc
-    where id = #{uid,jdbcType=INTEGER} and checked=1
+    where uid = #{uid,jdbcType=INTEGER} and checked=1
+
   </delete>
 
 

@@ -1,5 +1,6 @@
 package com.itdr.mapper;
 
+import com.itdr.pojo.Order;
 import com.itdr.pojo.OrderItem;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +20,11 @@ public interface OrderItemMapper {
     int updateByPrimaryKey(OrderItem record);
 
     List<OrderItem> selectByOrderNoAndUserId(@Param("orderNo") Long orderNo, @Param("uid")Integer id);
+
+    OrderItem selectByPid(Integer id);
+
+    int deleteByUid(Integer uid);
+
+    List<OrderItem> selectByUid(Integer id);
+
 }

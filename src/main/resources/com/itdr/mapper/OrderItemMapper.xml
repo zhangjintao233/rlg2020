@@ -174,4 +174,29 @@
   </select>
 
 
+  <select id="selectByPid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from order_item
+    where pid=#{id}
+
+  </select>
+
+
+  <delete id="deleteByUid" parameterType="integer">
+    delete from
+    order_item
+    where uid=#{uid}
+  </delete>
+
+
+  <select id="selectByUid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from order_item
+    where uid=#{id}
+
+  </select>
+
+
 </mapper>
